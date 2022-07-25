@@ -1,0 +1,17 @@
+
+
+.name{
+    margin-right: 10px;
+}
+
+.setInput{
+    display: flex;
+    margin-bottom: 10px;
+}
+
+
+.input {
+    padding-left:10px;
+    width:65px;
+    text-align:center;
+}

@@ -8,6 +8,7 @@ export const Counter = () => {
     const [maxValue, setMaxValue] = useState(5)
     const [startValue, setStartValue] = useState(1)
     const [value, setValue] = useState<number>(0)
+    const [statusBtn, setStatusBtn] = useState(false)
 
 
     const setButtonHandler = () => {
@@ -22,12 +23,14 @@ export const Counter = () => {
                 setMaxValue={setMaxValue}
                 setStartValue={setStartValue}
                 onClick={setButtonHandler}
+
             />
             <CounterPanel
                 startValue={startValue}
                 setValue={setValue}
                 value={value}
                 maxValue={maxValue}
+                statusBtn={statusBtn}
                 // setButton={setButtonHandler}
             />
         </div>
