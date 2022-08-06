@@ -8,15 +8,6 @@ type ButtonPropsType = {
 }
 
 export const Button = (props: ButtonPropsType) => {
-
-    // const onClickCallBack = () => {
-    //
-    //     //
-    //     //
-    //     //
-    //     props.callBack()
-    // }
-
     return (
         <div className={s.btnBlock}>
             <button

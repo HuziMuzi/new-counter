@@ -47,7 +47,9 @@
 
 }
 
-.colorError {
+.errorMessage {
+    font-size: 26px;
+    font-weight: bold;
     color: red;
 }
 
@@ -59,4 +61,10 @@
     font-size: 20px;
     color: #77e2f9;
     padding: 10px;
+}
+
+.colorError {
+    font-size: 68px;
+    font-weight: bold;
+    color: red;
 }

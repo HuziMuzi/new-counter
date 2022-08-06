@@ -1,21 +1,21 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import s from './CounterPanel.module.css'
-import {Button} from "./Button/Button";
-import {Display} from "./Display/Display";
+import { Button } from "./Button/Button";
+import { Display } from "./Display/Display";
 
 type CounterPanel = {
     startValue: number
-    value: number
+    value: number | null
     setValue: (val: number) => void
     maxValue: number
-    statusBtn: boolean
+    buttonDisabled: boolean
+    error: string
 }
 
 export const CounterPanel = (props: CounterPanel) => {
 
-
     const onClickPlus = () => {
-        props.setValue(props.value + 1)
+        props.value && props.setValue(props.value + 1)
         //setValue((state) => state + 1 )
     }
 
@@ -23,17 +23,19 @@ export const CounterPanel = (props: CounterPanel) => {
         props.setValue(props.startValue)
     }
 
+    // const textError = props.error ? 'Incorrect value' : 'Enter value and press SET'
     return (
         <div className={s.window}>
             <div className={s.windowValue}>
-                {props.statusBtn ?
-                    <Display value={props.value} maxValue={props.maxValue}/>
-                    : <span className={s.alarmMessage}>{"Enter value and press SET"}</span>
+                {props.value ?
+                    <Display value={props.value} maxValue={props.maxValue} />
+                    : <span className={props.error === 'Incorrect value' ? s.errorMessage : s.alarmMessage}>{props.error}
+                </span>
                 }
             </div>
             <div className={s.buttons}>
-                <Button name={'inc'} callBack={onClickPlus} disabledBtn={props.value === props.maxValue}/>
-                <Button name={'reset'} callBack={onClickReset} disabledBtn={props.value === 0}/>
+                <Button name={'inc'} callBack={onClickPlus} disabledBtn={props.value === props.maxValue || !props.buttonDisabled || !!props.error} />
+                <Button name={'reset'} callBack={onClickReset} disabledBtn={props.value === props.startValue || !props.buttonDisabled || !!props.error} />
             </div>
         </div>
     );
