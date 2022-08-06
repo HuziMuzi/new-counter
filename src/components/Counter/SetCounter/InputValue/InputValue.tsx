@@ -6,7 +6,7 @@ type InputValueType = {
     title: string
     value: number
     setValue: (value: number) => void
-    setValueChangeInput: (value : number | null) => void
+    setValueChangeInput: (value : number) => void
     chekingError:(val: number) => void
     error: string
 }
@@ -17,7 +17,7 @@ export const InputValue = (props: InputValueType) => {
 `
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
         props.setValue(+e.currentTarget.value)
-        props.setValueChangeInput(null)
+        //props.setValueChangeInput(null)
         props.chekingError(+e.currentTarget.value)
     }
 

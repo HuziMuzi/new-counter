@@ -9,12 +9,10 @@ type SetCounter = {
     setMaxValue: (value: number) => void
     setStartValue: (value: number) => void
     onStartValue: () => void
-    // value: number | null
-    error:string
-    buttonDisabled: boolean
-    setValueChangeInput: (value : number | null) => void
-    chekingErrorStartValue :(val : number) => void
-    chekingErrorMaxValue :(val : number) => void
+    error: string
+    setValueChangeInput: (value: number) => void
+    chekingErrorStartValue: (val: number) => void
+    chekingErrorMaxValue: (val: number) => void
 }
 
 const SetCounter: FC<SetCounter> = ({
@@ -23,8 +21,6 @@ const SetCounter: FC<SetCounter> = ({
                                         setMaxValue,
                                         setStartValue,
                                         onStartValue,
-                                        // value,
-                                        buttonDisabled,
                                         setValueChangeInput,
                                         error,
                                         chekingErrorStartValue,
@@ -52,7 +48,7 @@ const SetCounter: FC<SetCounter> = ({
                 />
             </div>
             <div className={s.buttons}>
-                <Button name={'set'} callBack={()=>{onStartValue()}} disabledBtn={buttonDisabled}/>
+                <Button name={'set'} callBack={onStartValue} disabledBtn={error !== 'Enter value and press SET'}/>
             </div>
         </div>
     );
